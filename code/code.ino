@@ -1,11 +1,15 @@
 #include <Bounce.h>
 
 const int buttonPin = 8;
-Bounce pushbutton = Bounce(buttonPin, 10);  // 10 ms debounce
+const int ledPin = 13;
+Bounce pushbutton = Bounce(buttonPin, 5);  // 10 ms debounce
 
 void setup() {
   Keyboard.begin();
   pinMode(buttonPin, INPUT_PULLUP);
+  pinMode(ledPin, OUTPUT);
+
+  digitalWrite(ledPin, HIGH); // Light up on board LED to show connected status
 }
 
 byte previousState = LOW;         // what state was the button last time
